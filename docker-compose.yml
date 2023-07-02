@@ -1,0 +1,31 @@
+version: "3.5"
+
+services:
+    nombre_proyecto_2:
+        build:
+            context: . 
+            dockerfile: Dockerfile.dev
+            target: develop_image
+            args:
+                - UID=1000
+                - GID=1000
+        container_name: nombre_proyecto_2
+        tty: true
+        volumes:
+            - ./:/home/appadmin/app
+            
+
+    db:
+        image: postgres
+        container_name: pg_nombre_proyecto_2
+        volumes:
+        - data_db:/var/lib/postgresql/data
+        environment:
+        - POSTGRES_DB=postgres
+        - POSTGRES_USER=postgres
+        - POSTGRES_PASSWORD=postgres
+        ports:
+            - "5432:5432"
+
+volumes:
+    data_db:

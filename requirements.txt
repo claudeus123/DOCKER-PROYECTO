@@ -1,0 +1,5 @@
+pyzbar
+opencv-python
+psycopg2-binary
+serial
+pyserial
